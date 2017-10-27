@@ -1,0 +1,15 @@
+html, body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  height: 100%;
+}
+
+md-sidenav {
+  width: 250px;
+}
+
+.content {
+  padding: 12px;
+}

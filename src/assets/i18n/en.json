@@ -1,0 +1,8 @@
+{
+  "SOME_COMPONENT": {
+    "FIELDS": {
+      "ID": "Id",
+      "NAME": "Name"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<adf-toolbar [color]="'accent'">
+  <adf-toolbar-title>
+    <span *ngIf="appName">Start a process for '{{ appName }}'</span>
+  </adf-toolbar-title>
+  <adf-toolbar-divider></adf-toolbar-divider>
+  <button md-icon-button
+          mdTooltip="Close and go back to Process App list"
+          (click)="onGoBack($event)"
+          aria-label="Close">
+    <md-icon>close</md-icon>
+  </button>
+</adf-toolbar>
+<adf-start-process
+  [appId]="appId"
+  (start)="onStartProcessInstance($event)"
+  (cancel)="onCancelProcessInstance()"
+  (error)="onStartError($event)">
+</adf-start-process>

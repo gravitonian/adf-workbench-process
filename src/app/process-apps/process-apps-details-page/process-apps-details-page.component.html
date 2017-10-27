@@ -1,0 +1,31 @@
+<adf-toolbar [color]="'accent'">
+  <adf-toolbar-title>
+      <span *ngIf="appName">{{ appName }}</span>
+  </adf-toolbar-title>
+  <button md-icon-button
+          mdTooltip="Show Process Definitions included in app"
+          (click)="onShowProcDefs($event)">
+    <md-icon>device_hub</md-icon>
+  </button>
+  <button md-icon-button
+          mdTooltip="Start Process based on Process Definitions for App"
+          (click)="onStartProcess($event)">
+    <md-icon>launch</md-icon>
+  </button>
+  <adf-toolbar-divider></adf-toolbar-divider>
+  <button md-icon-button
+          class="adf-viewer-close-button"
+          mdTooltip="Close and go back to Process App list"
+          (click)="onGoBack($event)"
+          aria-label="Close">
+    <md-icon>close</md-icon>
+  </button>
+</adf-toolbar>
+<md-card class="adf-card-container">
+  <md-card-content>
+    <adf-card-view
+      [properties]="properties"
+      [editable]="false">  
+    </adf-card-view>
+  </md-card-content>
+</md-card>

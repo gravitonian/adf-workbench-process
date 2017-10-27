@@ -1,0 +1,50 @@
+<adf-toolbar [color]="'accent'">
+  <adf-toolbar-title>
+      <span *ngIf="appName">Process Definitions associated with app '{{ appName }}'</span>
+  </adf-toolbar-title>
+  <adf-toolbar-divider></adf-toolbar-divider>
+  <button md-icon-button
+                  class="adf-viewer-close-button"
+                  mdTooltip="Close and go back to process app list"
+                  (click)="onGoBack($event)"
+                  aria-label="Close">
+      <md-icon>close</md-icon>
+  </button>
+</adf-toolbar>
+<adf-datatable
+  [data]="data"
+  [loading]="isLoading"
+  [actions]="true"
+  [actionsPosition]="'right'"
+  [contextMenu]="true"
+  [showHeader]="true"
+  (showRowActionsMenu)="onShowThreeDotsMenu($event)"
+  (executeRowAction)="onExecuteThreeDotsMenuItem($event)"
+  (showRowContextMenu)="onShowDropDownMenu($event)"
+  (rowClick)="onRowClick($event)">
+  <data-columns>
+      <data-column title="Id" key="id" ></data-column>
+      <data-column title="Name" key="name" class="full-width name-column"></data-column>
+      <data-column title="Key" key="key" ></data-column>
+      <data-column title="Version" key="version"></data-column>
+  </data-columns>
+  <loading-content-template>
+      <!-- Show a spinner if loading is going on -->
+      <ng-template>
+        <md-progress-spinner
+          class="adf-process-list-loading-margin"
+          [color]="'primary'"
+          [mode]="'indeterminate'">
+        </md-progress-spinner>
+      </ng-template>
+  </loading-content-template>
+  <no-content-template>
+      <!-- Show a message if there are no process definitions associated with process app -->
+      <ng-template>
+        <div class="no-content-message">
+          {{ 'PPROCDEF_LIST.NONE' | translate }}
+        </div>
+      </ng-template>
+  </no-content-template>
+</adf-datatable>
+<adf-context-menu-holder></adf-context-menu-holder>

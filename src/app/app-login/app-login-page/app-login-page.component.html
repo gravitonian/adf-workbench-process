@@ -1,0 +1,24 @@
+<div fxFlex="100">
+  <adf-login class="app-logo"
+    [providers]="'BPM'"
+    [copyrightText]="'© 2017 Alfresco Training.'"
+    [showRememberMe]="false"
+    [showLoginActions]="false"
+    [logoImageUrl]="'assets/images/adf-workbench-logo.png'"
+    [backgroundImageUrl]="'assets/images/adf-workbench-background.jpg'"
+    (onSuccess)="onLoginSuccess($event)"
+    (onError)="onLoginError($event)">
+    <!--
+    You cannot have both logo image and header,
+    you have to choose one or the other,
+    if both are defined then the header wins.
+
+    <login-header><ng-template>Some custom HTML for the header</ng-template></login-header>-->
+    <login-footer>
+      <ng-template>
+        This will log you into both Alfresco Content Services (ACS) and Alfresco Process Services (APS).
+      </ng-template>
+    </login-footer>
+  </adf-login>
+</div>
+

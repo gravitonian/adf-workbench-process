@@ -1,0 +1,43 @@
+<md-sidenav-container>
+  <md-sidenav #mainSideNav mode="side" opened>
+    <md-toolbar>
+      <img src="../assets/images/alfresco-logo.png" style="height:60%">
+      <span fxFlex></span>
+      {{appName}}
+    </md-toolbar>
+    <md-nav-list>
+      <a *ngFor="let menuItem of mainMenuItems"
+         md-list-item
+         md-ripple
+         [style.position]="'relative'"
+         routerLinkActive="selected"
+         [routerLink]="[menuItem.path]">
+        <md-icon md-list-icon *ngIf="menuItem.icon">{{menuItem.icon}}</md-icon>
+        <span>{{menuItem.title}}</span>
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <button md-icon-button (click)="mainSideNav.toggle()">
+      <md-icon *ngIf="mainSideNav.opened">chevron_left</md-icon>
+      <md-icon *ngIf="!mainSideNav.opened">menu</md-icon>
+    </button>
+    {{(activeMenuItem$ | async)?.title}}
+    <span fxFlex></span>
+    <button md-icon-button [mdMenuTriggerFor]="dropdownMenu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+  <router-outlet></router-outlet>
+</md-sidenav-container>
+<md-menu #dropdownMenu x-position="before">
+  <a md-menu-item href="" (click)="onLogout($event)">
+    <md-icon>exit_to_app</md-icon>
+    <span>Logout</span>
+  </a>
+  <a md-menu-item href="" routerLink="/about">
+    <md-icon>info_outline</md-icon>
+    <span>About</span>
+  </a>
+</md-menu>
+‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍‍

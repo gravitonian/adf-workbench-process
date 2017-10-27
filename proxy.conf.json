@@ -1,0 +1,16 @@
+{
+  "/ecm": {
+    "target": "http://127.0.0.1:8080",
+    "secure": false,
+    "pathRewrite": {
+      "^/ecm": ""
+    }
+  },
+  "/bpm": {
+    "target": "http://127.0.0.1:9080",
+    "secure": false,
+    "pathRewrite": {
+      "^/bpm": ""
+    }
+  }
+}

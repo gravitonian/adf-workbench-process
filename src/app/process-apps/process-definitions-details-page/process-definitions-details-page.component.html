@@ -1,0 +1,30 @@
+<adf-toolbar [color]="'accent'">
+  <adf-toolbar-title>
+    <span *ngIf="appName">Process Definition '{{ procDefName }}' associated with app '{{ appName }}'</span>
+  </adf-toolbar-title>
+  <adf-toolbar-divider></adf-toolbar-divider>
+  <button md-icon-button
+          class="adf-viewer-close-button"
+          mdTooltip="Close and go back to Process Def list"
+          (click)="onGoBack($event)"
+          aria-label="Close">
+    <md-icon>close</md-icon>
+  </button>
+</adf-toolbar>
+<md-tab-group>
+  <md-tab label="Properties">
+    <md-card class="adf-card-container">
+      <md-card-content>
+        <adf-card-view
+          [properties]="properties"
+          [editable]="false">
+        </adf-card-view>
+      </md-card-content>
+    </md-card>
+  </md-tab>
+  <md-tab label="Preview">
+    <adf-diagram
+      [processDefinitionId]="procDefId">
+    </adf-diagram>
+  </md-tab>
+</md-tab-group>
