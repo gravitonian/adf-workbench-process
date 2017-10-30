@@ -1,0 +1,33 @@
+<adf-toolbar [color]="'accent'">
+  <adf-toolbar-title>
+    <span *ngIf="appName">My Processes for '{{ appName }}'</span>
+    <span *ngIf="!appName">Select an App to see processes</span>
+  </adf-toolbar-title>
+</adf-toolbar>
+<adf-apps
+  [layoutType]="'LIST'"
+  [filtersAppId]="processAppsFilter"
+  (appClick)="onAppClick($event)">
+</adf-apps>
+<div class="margin10">
+  <md-divider></md-divider>
+  Show processes that are:
+  <md-radio-group (change)="onSelectProcessType($event.value)" class="margin10">
+    <md-radio-button value="running" checked="true">Running</md-radio-button>
+    <md-radio-button value="completed">Completed</md-radio-button>
+  </md-radio-group>
+</div>
+<md-tab-group>
+  <md-tab [label]="processTypeName">
+    <adf-process-instance-list *ngIf="appId"
+                               [appId]="appId"
+                               [state]="processState"
+                               (rowClick)="onProcessClick($event)">
+      <data-columns>
+        <data-column key="id" title="Id"></data-column>
+        <data-column key="name" title="Name" class="full-width name-column"></data-column>
+        <data-column key="started" title="Started" type="date"></data-column>
+      </data-columns>
+    </adf-process-instance-list>
+  </md-tab>
+</md-tab-group>

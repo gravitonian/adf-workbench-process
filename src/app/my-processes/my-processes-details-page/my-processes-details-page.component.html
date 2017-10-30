@@ -1,0 +1,52 @@
+<div class="process-details-view">
+  <adf-toolbar [color]="'accent'">
+    <adf-toolbar-title>
+      <span *ngIf="processDetails">Process Details for '{{ processDetails.name }}' ({{ processDetails.id }})</span>
+    </adf-toolbar-title>
+    <adf-toolbar-divider></adf-toolbar-divider>
+    <button md-icon-button
+            mdTooltip="Close and go back to task list"
+            (click)="onGoBack($event)"
+            aria-label="Close">
+      <md-icon>close</md-icon>
+    </button>
+  </adf-toolbar>
+  <md-tab-group *ngIf="processDetails">
+    <md-tab label="Manage">
+      <md-card>
+        <span> {{ getProcessNameOrDescription('medium') }}</span>
+        <div *ngIf="isRunning()">
+          <button md-button type="button" (click)="cancelProcess()">{{ 'DETAILS.BUTTON.CANCEL' | translate }}</button>
+        </div>
+      </md-card>
+    </md-tab>
+    <md-tab label="Properties">
+      <adf-process-instance-header
+        [processInstance]="processDetails">
+      </adf-process-instance-header>
+    </md-tab>
+    <md-tab label="Attachments">
+      <adf-process-attachment-list
+        [processInstanceId]="processDetails.id"
+        (attachmentClick)="onAttachmentClick()">
+      </adf-process-attachment-list>
+    </md-tab>
+    <md-tab label="Comments">
+      <adf-process-instance-comments
+        [processInstanceId]="processDetails.id"
+        [readOnly]="false">
+      </adf-process-instance-comments>
+    </md-tab>
+    <md-tab label="Tasks">
+      <adf-process-instance-tasks
+        [processInstanceDetails]="processDetails"
+        [showRefreshButton]="true">
+      </adf-process-instance-tasks>
+    </md-tab>
+    <md-tab label="Preview">
+      <adf-diagram
+        [processInstanceId]="processDetails.id">
+      </adf-diagram>
+    </md-tab>
+  </md-tab-group>
+</div>

@@ -1,0 +1,54 @@
+<div class="task-details-view">
+  <adf-toolbar [color]="'accent'">
+    <adf-toolbar-title>
+      <span *ngIf="taskDetails">Task Details for '{{ taskDetails.name }}' ({{ taskDetails.id }})</span>
+    </adf-toolbar-title>
+    <adf-toolbar-divider></adf-toolbar-divider>
+    <button md-icon-button
+            mdTooltip="Close and go back to task list"
+            (click)="onGoBack($event)"
+            aria-label="Close">
+      <md-icon>close</md-icon>
+    </button>
+  </adf-toolbar>
+  <md-tab-group *ngIf="taskDetails">
+    <md-tab label="Manage">
+      <adf-task-details
+        [taskId]="taskDetails.id"
+        [showHeader]="false"
+        [showHeaderContent]="false"
+        [showInvolvePeople]="false"
+        [showComments]="false"
+        [showChecklist]="false"
+        [showFormTitle]="true"
+        [showFormCompleteButton]="true"
+        [showFormSaveButton]="true"
+        [showFormRefreshButton]="false">
+      </adf-task-details>
+    </md-tab>
+    <md-tab label="Properties">
+      <adf-task-header
+        [taskDetails]="taskDetails">
+      </adf-task-header>
+    </md-tab>
+    <md-tab label="Attachments">
+      <adf-task-attachment-list
+        [taskId]="taskDetails.id"
+        (attachmentClick)="onAttachmentClick()">
+      </adf-task-attachment-list>
+    </md-tab>
+    <md-tab label="Comments">
+      <adf-comments
+        [taskId]="taskDetails.id"
+        [readOnly]="false">
+      </adf-comments>
+    </md-tab>
+    <md-tab label="Checklist (Sub-tasks)">
+      <adf-checklist *ngIf="taskDetails.assignee"
+                     [readOnly]="false"
+                     [taskId]="taskDetails.id"
+                     [assignee]="taskDetails.assignee.id">
+      </adf-checklist>
+    </md-tab>
+  </md-tab-group>
+</div>
