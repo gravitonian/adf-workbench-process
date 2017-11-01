@@ -9,8 +9,8 @@
   [filtersAppId]="processAppsFilter"
   (appClick)="onAppClick($event)">
 </adf-apps>
-<div class="margin10">
-  <md-divider></md-divider>
+<md-divider></md-divider>
+<div class="margin10" *ngIf="appName">
   Show processes that are:
   <md-radio-group (change)="onSelectProcessType($event.value)" class="margin10">
     <md-radio-button value="running" checked="true">Running</md-radio-button>
